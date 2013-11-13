@@ -1,5 +1,43 @@
 #!/usr/bin/env php
 <?php
 
+include 'vendor/autoload.php';
+
+function usage() {
+  global $argv;
+
+  echo "Usage: $argv[0] <inputFile> [outputFile]\n";
+  exit(1);
+}
+
+function main() {
+  global $argv, $argc;
+
+  if ($argc < 2 || $argc > 3)
+    usage();
+
+  $haml = new MtHaml\Environment('php');
+
+  $input = @file_get_contents($argv[1]);
+  if ($input === false) {
+    echo "Unable to open $argv[1]\n";
+    exit(1);
+  }
+
+  try {
+    $output = $haml->compileString($input, $argv[1]);
+  } catch (MtHaml\Exception\SyntaxErrorException $e) {
+    echo $e->getMessage() . "\n";
+    exit(1);
+  }
+
+  if ($argc == 3) {
+    file_put_contents($argv[2], $output);
+  } else {
+    echo $output;
+  }
+}
+
+main();
 
 # vim: ft=php
