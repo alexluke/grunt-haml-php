@@ -15,7 +15,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
-  grunt.registerMultiTask('haml_php', 'Process HAML templates using MtHaml, a PHP port of Haml.', function() {
+  grunt.registerMultiTask('haml', 'Process HAML templates using MtHaml, a PHP port of Haml.', function() {
     var done = this.async();
 
     var options = this.options({
