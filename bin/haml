@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-include 'vendor/autoload.php';
+require dirname(__FILE__) . '/../vendor/autoload.php';
 
 function usage() {
   global $argv;

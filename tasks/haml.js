@@ -11,6 +11,7 @@
 module.exports = function(grunt) {
 
   var async = require('async');
+  var path = require('path');
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
@@ -40,7 +41,7 @@ module.exports = function(grunt) {
 
   var compileHaml = function(item, cb) {
     var child = grunt.util.spawn({
-      cmd: 'bin/haml',
+      cmd: path.join(__dirname, '../bin/haml'),
       args: [item]
     }, function(error, result, code) {
       cb(error, result.stdout);
