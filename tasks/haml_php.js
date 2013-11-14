@@ -10,41 +10,63 @@
 
 module.exports = function(grunt) {
 
+  var async = require('async');
+
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
   grunt.registerMultiTask('haml_php', 'Process HAML templates using MtHaml, a PHP port of Haml.', function() {
-    // Merge task-specific and/or target-specific options with these defaults.
+    var done = this.async();
+
     var options = this.options({
-      punctuation: '.',
-      separator: ', '
+      separator: grunt.util.linefeed
     });
 
-    // Iterate over all specified file groups.
-    this.files.forEach(function(f) {
-      // Concat specified files.
-      var src = f.src.filter(function(filepath) {
-        // Warn on and remove invalid source files (if nonull was set).
-        if (!grunt.file.exists(filepath)) {
-          grunt.log.warn('Source file "' + filepath + '" not found.');
-          return false;
-        } else {
-          return true;
+    grunt.verbose.writeflags(options, 'Options');
+
+    async.forEach(this.files, function(f, callback) {
+      var validFiles = removeInvalidFiles(f);
+
+      async.map(validFiles, compileHaml, function(err, results) {
+        if (err) {
+          grunt.log.warn(err);
+          return;
         }
-      }).map(function(filepath) {
-        // Read file source.
-        return grunt.file.read(filepath);
-      }).join(grunt.util.normalizelf(options.separator));
 
-      // Handle options.
-      src += options.punctuation;
-
-      // Write the destination file.
-      grunt.file.write(f.dest, src);
-
-      // Print a success message.
-      grunt.log.writeln('File "' + f.dest + '" created.');
-    });
+        writeFile(f.dest, results.join(grunt.util.normalizelf(options.separator)));
+        callback();
+      });
+    }, done);
   });
+
+  var compileHaml = function(item, cb) {
+    var child = grunt.util.spawn({
+      cmd: 'bin/haml',
+      args: [item]
+    }, function(error, result, code) {
+      cb(error, result.stdout);
+    });
+    child.stderr.pipe(process.stderr);
+  };
+
+  var removeInvalidFiles = function(files) {
+    return files.src.filter(function(filepath) {
+      if (!grunt.file.exists(filepath)) {
+        grunt.log.warn('Source file "' + filepath + '" not found.');
+        return false;
+      } else {
+        return true;
+      }
+    });
+  };
+
+  var writeFile = function(path, output) {
+    if (output.length < 1) {
+      grunt.log.warn('Destination (' + path + ') not written because compiled files were empty.');
+    } else {
+      grunt.file.write(path, output);
+      grunt.log.writeln('File ' + path.cyan + ' created.');
+    }
+  };
 
 };
