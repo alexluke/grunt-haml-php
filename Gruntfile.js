@@ -30,11 +30,11 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     haml: {
-      basic: {
+      basic_html: {
         options: {
         },
         files: {
-          'tmp/basic.php': ['test/fixtures/basic.haml'],
+          'tmp/basic.html': ['test/fixtures/basic.haml'],
         },
       },
     },
