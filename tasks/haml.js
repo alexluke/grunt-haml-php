@@ -30,10 +30,9 @@ module.exports = function(grunt) {
       async.map(validFiles, compileHaml, function(err, results) {
         if (err) {
           grunt.log.warn(err);
-          return;
+        } else {
+          writeFile(f.dest, results.join(grunt.util.normalizelf(options.separator)));
         }
-
-        writeFile(f.dest, results.join(grunt.util.normalizelf(options.separator)));
         callback();
       });
     }, done);
@@ -46,7 +45,6 @@ module.exports = function(grunt) {
     }, function(error, result, code) {
       cb(error, result.stdout);
     });
-    child.stderr.pipe(process.stderr);
   };
 
   var removeInvalidFiles = function(files) {

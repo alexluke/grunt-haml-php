@@ -22,7 +22,7 @@ var grunt = require('grunt');
     test.ifError(value)
 */
 
-exports.haml_php = {
+exports.haml = {
   setUp: function(done) {
     // setup here if necessary
     done();
@@ -33,6 +33,13 @@ exports.haml_php = {
     var actual = grunt.file.read('tmp/basic.html');
     var expected = grunt.file.read('test/expected/basic.html');
     test.equal(actual, expected, 'Should compile haml to html');
+
+    test.done();
+  },
+  invalid: function(test) {
+    test.expect(1);
+
+    test.ok(!grunt.file.exists('tmp/invalid.html'), 'Empty file on error should not exist');
 
     test.done();
   },

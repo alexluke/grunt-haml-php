@@ -37,6 +37,11 @@ module.exports = function(grunt) {
           'tmp/basic.html': ['test/fixtures/basic.haml'],
         },
       },
+      invalid: {
+        files: {
+          'tmp/invalid.html': ['test/fixtures/invalid.haml'],
+        },
+      }
     },
 
     // Unit tests.

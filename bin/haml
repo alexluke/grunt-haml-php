@@ -6,7 +6,7 @@ include 'vendor/autoload.php';
 function usage() {
   global $argv;
 
-  echo "Usage: $argv[0] <inputFile> [outputFile]\n";
+  fwrite(STDERR, "Usage: $argv[0] <inputFile> [outputFile]\n");
   exit(1);
 }
 
@@ -20,14 +20,14 @@ function main() {
 
   $input = @file_get_contents($argv[1]);
   if ($input === false) {
-    echo "Unable to open $argv[1]\n";
+    fwrite(STDERR, "Unable to open $argv[1]\n");
     exit(1);
   }
 
   try {
     $output = $haml->compileString($input, $argv[1]);
   } catch (MtHaml\Exception\SyntaxErrorException $e) {
-    echo $e->getMessage() . "\n";
+    fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
   }
 
