@@ -17,14 +17,16 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-haml-php');
 ```
 
-## The "haml_php" task
+## The "haml" task
+
+This plugin requires [composer](http://getcomposer.org/) in order to install PHP dependencies. Please follow the [installation instructions](http://getcomposer.org/doc/00-intro.md#system-requirements) before installing this plugin.
 
 ### Overview
-In your project's Gruntfile, add a section named `haml_php` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `haml` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  haml_php: {
+  haml: {
     options: {
       // Task-specific options go here.
     },
@@ -35,49 +37,32 @@ grunt.initConfig({
 })
 ```
 
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
 ### Usage Examples
 
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+#### Simple file mapping
 
 ```js
 grunt.initConfig({
-  haml_php: {
-    options: {},
+  haml: {
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'dest/file1.html': ['src/file1.haml'],
     },
   },
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### All haml files
+This example compiles all haml files in a directory and adds a php extension.
 
 ```js
 grunt.initConfig({
-  haml_php: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+  haml: {
+    files: [{
+      expand: true,
+      src: ['src/templates/**/*.haml'],
+      dest: 'dest/templates',
+      ext: '.php'
+    }],
   },
 })
 ```
