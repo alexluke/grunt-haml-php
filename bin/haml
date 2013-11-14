@@ -16,7 +16,7 @@ function main() {
   if ($argc < 2 || $argc > 3)
     usage();
 
-  $haml = new MtHaml\Environment('php');
+  $haml = new MtHaml\Environment('php', array('enable_escaper' => false));
 
   $input = @file_get_contents($argv[1]);
   if ($input === false) {

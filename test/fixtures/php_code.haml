@@ -1,0 +1,6 @@
+%ul#users
+  - foreach($users as $user)
+    %li.user
+      = $user->getName()
+      Email: #{$user->getEmail()}
+      %a(href=$user->getUrl()) Home page

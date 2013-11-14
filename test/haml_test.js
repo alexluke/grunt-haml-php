@@ -43,4 +43,13 @@ exports.haml = {
 
     test.done();
   },
+  php_code: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/php_code.php');
+    var expected = grunt.file.read('test/expected/php_code.php');
+    test.equal(actual, expected, 'Should compile haml with embedded php');
+
+    test.done();
+  },
 };

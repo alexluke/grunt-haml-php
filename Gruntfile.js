@@ -41,7 +41,12 @@ module.exports = function(grunt) {
         files: {
           'tmp/invalid.html': ['test/fixtures/invalid.haml'],
         },
-      }
+      },
+      php_code: {
+        files: {
+          'tmp/php_code.php': ['test/fixtures/php_code.haml'],
+        },
+      },
     },
 
     // Unit tests.
