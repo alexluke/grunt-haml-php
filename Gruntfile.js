@@ -38,6 +38,9 @@ module.exports = function(grunt) {
         },
       },
       invalid: {
+        options: {
+          writeError: false,
+        },
         files: {
           'tmp/invalid.html': ['test/fixtures/invalid.haml'],
         },
@@ -47,6 +50,11 @@ module.exports = function(grunt) {
           'tmp/php_code.php': ['test/fixtures/php_code.haml'],
         },
       },
+      invalidWrite: {
+        files: {
+          'tmp/invalidWrite.html': ['test/fixtures/invalid.haml'],
+        },
+      }
     },
 
     // Unit tests.

@@ -20,6 +20,7 @@ module.exports = function(grunt) {
     var done = this.async();
 
     var options = this.options({
+      writeError: true,
       separator: grunt.util.linefeed
     });
 
@@ -31,6 +32,9 @@ module.exports = function(grunt) {
       async.map(validFiles, compileHaml, function(err, results) {
         if (err) {
           grunt.log.warn(err);
+          if (options.writeError) {
+            writeFile(f.dest, err);
+          }
         } else {
           writeFile(f.dest, results.join(grunt.util.normalizelf(options.separator)));
         }

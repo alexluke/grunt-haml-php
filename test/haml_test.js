@@ -43,6 +43,15 @@ exports.haml = {
 
     test.done();
   },
+  invalidWrite: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/invalidWrite.html');
+    var expected = grunt.file.read('test/expected/invalidWrite.html');
+    test.equal(actual, expected, 'Should write error to output file');
+
+    test.done();
+  },
   php_code: function(test) {
     test.expect(1);
 

@@ -37,6 +37,14 @@ grunt.initConfig({
 })
 ```
 
+### Options
+
+#### options.writeError
+Type: `Boolean`
+Default value: `true`
+
+If enabled, write any compile errors to the output file. Otherwise do nothing.
+
 ### Usage Examples
 
 #### Simple file mapping
