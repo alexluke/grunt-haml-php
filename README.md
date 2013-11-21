@@ -81,3 +81,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 ## Release History
 
 * 11/14/2013 - v0.1.1 - Initial release.
+* 11/20/2013 - v0.2.0 - Add option for writing errors to output file
