@@ -54,6 +54,11 @@ module.exports = function(grunt) {
         files: {
           'tmp/invalidWrite.html': ['test/fixtures/invalid.haml'],
         },
+      },
+      unknownFilter: {
+        files: {
+          'tmp/unknown_filter.html': ['test/fixtures/unknown_filter.haml']
+        },
       }
     },
 

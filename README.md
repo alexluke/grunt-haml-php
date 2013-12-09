@@ -80,5 +80,6 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+* 12/9/2013 - v0.2.1 - Catch all php errors, regardless of system settings
 * 11/20/2013 - v0.2.0 - Add option for writing errors to output file
 * 11/14/2013 - v0.1.0 - Initial release.

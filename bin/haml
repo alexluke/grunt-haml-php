@@ -26,7 +26,7 @@ function main() {
 
   try {
     $output = $haml->compileString($input, $argv[1]);
-  } catch (MtHaml\Exception\SyntaxErrorException $e) {
+  } catch (Exception $e) {
     fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
   }

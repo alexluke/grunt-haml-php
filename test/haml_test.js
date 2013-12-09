@@ -61,4 +61,13 @@ exports.haml = {
 
     test.done();
   },
+  unknown_filter: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/unknown_filter.html');
+    var expected = grunt.file.read('test/expected/unknown_filter.html');
+    test.equal(actual, expected, 'Should write error about unknown filter');
+
+    test.done();
+  },
 };
