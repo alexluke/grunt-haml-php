@@ -15,7 +15,7 @@
     "source": "https://github.com/alexluke/grunt-haml-php"
   },
   "require": {
-    "mthaml/mthaml": "~1.3"
+    "scil/mthaml-more": "*"
   },
   "bin": ["bin/haml"],
   "keywords": [
