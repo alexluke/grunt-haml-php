@@ -1,18 +1,18 @@
 {
-  "name": "alexluke/grunt-haml-php",
-  "description": "Process HAML templates using MtHaml, a PHP port of Haml.",
+  "name": "bgilhome/grunt-haml-php-more",
+  "description": "Process HAML templates using MtHaml-more, a PHP port of Haml.",
   "version": "0.1.0",
-  "homepage": "https://github.com/alexluke/grunt-haml-php",
+  "homepage": "https://github.com/bgilhome/grunt-haml-php",
   "license": "MIT",
   "authors": [
     {
-      "name": "Alex Luke",
-      "email": "alexl@bnj.com"
+      "name": "Bryce Gilhome",
+      "email": "me@bryce.com.au"
     }
   ],
   "support": {
-    "url": "https://github.com/alexluke/grunt-haml-php/issues",
-    "source": "https://github.com/alexluke/grunt-haml-php"
+    "url": "https://github.com/bgilhome/grunt-haml-php/issues",
+    "source": "https://github.com/bgilhome/grunt-haml-php"
   },
   "require": {
     "scil/mthaml-more": "*"

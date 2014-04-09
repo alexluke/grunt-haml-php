@@ -1,23 +1,23 @@
 {
-  "name": "grunt-haml-php",
-  "description": "Process HAML templates using MtHaml, a PHP port of Haml.",
+  "name": "grunt-haml-php-more",
+  "description": "Process HAML templates using MtHaml-more, a PHP port of Haml.",
   "version": "0.2.1",
-  "homepage": "https://github.com/alexluke/grunt-haml-php",
+  "homepage": "https://github.com/bgilhome/grunt-haml-php",
   "author": {
-    "name": "Alex Luke",
-    "email": "alexl@bnj.com"
+    "name": "Bryce Gilhome",
+    "email": "me@bryce.com.au"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alexluke/grunt-haml-php.git"
+    "url": "git://github.com/bgilhome/grunt-haml-php.git"
   },
   "bugs": {
-    "url": "https://github.com/alexluke/grunt-haml-php/issues"
+    "url": "https://github.com/bgilhome/grunt-haml-php/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/alexluke/grunt-haml-php/blob/master/LICENSE-MIT"
+      "url": "https://github.com/bgilhome/grunt-haml-php/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
