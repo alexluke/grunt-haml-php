@@ -16,7 +16,7 @@ function main() {
   if ($argc < 2 || $argc > 3)
     usage();
 
-  $haml = new MtHaml\Environment('php', array('enable_escaper' => false));
+  $haml = new MtHaml\More\Environment('php_more', array('enable_escaper' => false));
 
   $input = @file_get_contents($argv[1]);
   if ($input === false) {
@@ -24,8 +24,9 @@ function main() {
     exit(1);
   }
 
+
   try {
-    $output = $haml->compileString($input, $argv[1]);
+    $output = $haml->compileString($input, array('filename' => $argv[1], 'reduce_runtime' => true));
   } catch (Exception $e) {
     fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
