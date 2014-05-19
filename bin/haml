@@ -6,38 +6,47 @@ require dirname(__FILE__) . '/../vendor/autoload.php';
 function usage() {
   global $argv;
 
-  fwrite(STDERR, "Usage: $argv[0] <inputFile> [outputFile]\n");
+  fwrite(STDERR, "Usage: $argv[0] [-t target] <inputFile> [outputFile]\n");
   exit(1);
 }
 
-function main() {
-  global $argv, $argc;
+function main($args) {
+  array_shift($args);
 
-  if ($argc < 2 || $argc > 3)
+  $opts = getopt('t:');
+
+  if (isset($opts['t'])) {
+    $target = $opts['t'];
+    $args = array_slice($args, 2);
+  } else {
+    $target = 'php';
+  }
+
+  if (count($args) < 1 || count($args) > 2)
     usage();
 
-  $haml = new MtHaml\Environment('php', array('enable_escaper' => false));
+  $haml = new MtHaml\Environment($target, array('enable_escaper' => false));
 
-  $input = @file_get_contents($argv[1]);
+  $input = @file_get_contents($args[0]);
   if ($input === false) {
-    fwrite(STDERR, "Unable to open $argv[1]\n");
+    fwrite(STDERR, "Unable to open $args[0]\n");
     exit(1);
   }
 
   try {
-    $output = $haml->compileString($input, $argv[1]);
+    $output = $haml->compileString($input, $args[0]);
   } catch (Exception $e) {
     fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
   }
 
-  if ($argc == 3) {
-    file_put_contents($argv[2], $output);
+  if (count($args) == 2) {
+    file_put_contents($args[1], $output);
   } else {
     echo $output;
   }
 }
 
-main();
+main($argv);
 
 # vim: ft=php

@@ -13,6 +13,8 @@ module.exports = function(grunt) {
   var async = require('async');
   var path = require('path');
 
+  var hamlTarget;
+
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
 
@@ -21,8 +23,11 @@ module.exports = function(grunt) {
 
     var options = this.options({
       writeError: true,
-      separator: grunt.util.linefeed
+      separator: grunt.util.linefeed,
+      target: 'php'
     });
+
+    hamlTarget = options.target;
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -46,7 +51,11 @@ module.exports = function(grunt) {
   var compileHaml = function(item, cb) {
     var child = grunt.util.spawn({
       cmd: path.join(__dirname, '../bin/haml'),
-      args: [item]
+      args: [
+        '-t',
+        hamlTarget || 'php',
+        item
+      ]
     }, function(error, result, code) {
       cb(error, result.stdout);
     });
