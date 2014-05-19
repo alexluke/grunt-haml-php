@@ -58,8 +58,10 @@ If enabled, write any compile errors to the output file. Otherwise do nothing.
 ```js
 grunt.initConfig({
   haml: {
-    files: {
-      'dest/file1.html': ['src/file1.haml'],
+    compile: {
+      files: {
+        'dest/file1.html': ['src/file1.haml'],
+      },
     },
   },
 })
@@ -71,12 +73,14 @@ This example compiles all haml files in a directory and adds a php extension.
 ```js
 grunt.initConfig({
   haml: {
-    files: [{
-      expand: true,
-      src: ['src/templates/**/*.haml'],
-      dest: 'dest/templates',
-      ext: '.php'
-    }],
+    compile: {
+      files: [{
+        expand: true,
+        src: ['src/templates/**/*.haml'],
+        dest: 'dest/templates',
+        ext: '.php'
+      }],
+    },
   },
 })
 ```
