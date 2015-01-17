@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "802cc83e6c99f99e47996ff9785ee9ba",
+    "hash": "dfdda4b40c466d0e47980e25085a9383",
     "packages": [
         {
             "name": "mthaml/mthaml",
@@ -61,6 +61,52 @@
                 "HAML"
             ],
             "time": "2013-10-20 12:09:50"
+        },
+        {
+            "name": "scil/mthaml-more",
+            "version": "v0.5.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scil/MtHamlMore.git",
+                "reference": "26e1ec40b3f066899e25f4415defb220cf69c4e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scil/MtHamlMore/zipball/26e1ec40b3f066899e25f4415defb220cf69c4e5",
+                "reference": "26e1ec40b3f066899e25f4415defb220cf69c4e5",
+                "shasum": ""
+            },
+            "require": {
+                "mthaml/mthaml": ">=1.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/MtHaml/More/Node/hackNodeAbstract.php",
+                    "lib/MtHaml/More/Node/hackNestAbstract.php"
+                ],
+                "psr-0": {
+                    "MtHaml\\More\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "scil",
+                    "email": "scil.zc@gmail.com"
+                }
+            ],
+            "description": "Add more features like snippet to MtHaml, one way to \"Don't Reinvent the Wheel\"",
+            "homepage": "https://github.com/scil/MtHamlMore",
+            "keywords": [
+                "HAML",
+                "mthaml",
+                "snippet"
+            ],
+            "time": "2013-12-18 14:22:32"
         }
     ],
     "packages-dev": [

@@ -26,7 +26,7 @@ function main() {
 
 
   try {
-    $output = $haml->compileString($input, array('filename' => $argv[1], 'reduce_runtime' => true));
+    $output = $haml->compileString($input, array('filename' => $argv[1], 'reduce_runtime' => true, 'reduce_runtime_array_tolerant' => true));
   } catch (Exception $e) {
     fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
