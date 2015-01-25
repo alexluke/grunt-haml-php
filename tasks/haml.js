@@ -14,6 +14,7 @@ module.exports = function(grunt) {
   var path = require('path');
 
   var hamlTarget;
+  var hamlEnableDynamicAttributes;
 
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
@@ -24,10 +25,12 @@ module.exports = function(grunt) {
     var options = this.options({
       writeError: true,
       separator: grunt.util.linefeed,
-      target: 'php'
+      target: 'php',
+      enableDynamicAttributes: true
     });
 
     hamlTarget = options.target;
+    hamlEnableDynamicAttributes = options.enableDynamicAttributes;
 
     grunt.verbose.writeflags(options, 'Options');
 
@@ -49,13 +52,14 @@ module.exports = function(grunt) {
   });
 
   var compileHaml = function(item, cb) {
+    var args = ['-t', hamlTarget || 'php', item ];
+    if (!hamlEnableDynamicAttributes) {
+      args.unshift('-d');
+    }
+
     var child = grunt.util.spawn({
       cmd: path.join(__dirname, '../bin/haml'),
-      args: [
-        '-t',
-        hamlTarget || 'php',
-        item
-      ]
+      args: args
     }, function(error, result, code) {
       cb(error, result.stdout);
     });

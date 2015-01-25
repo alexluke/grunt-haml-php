@@ -3,7 +3,7 @@
     <li class="user">
       <?php echo $user->getName(); ?>
       Email: <?php echo $user->getEmail(); ?>
-      <a <?php echo MtHaml\Runtime::renderAttributes(array(array('href', ($user->getUrl()))), 'html5', 'UTF-8', false); ?>>Home page</a>
+      <a href="<?php echo $user->getUrl(); ?>">Home page</a>
     </li>
   <?php } ?>
 </ul>

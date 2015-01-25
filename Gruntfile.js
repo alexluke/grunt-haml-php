@@ -50,6 +50,14 @@ module.exports = function(grunt) {
           'tmp/php_code.php': ['test/fixtures/php_code.haml'],
         },
       },
+      php_code_no_dynamic_attributes: {
+        options: {
+          enableDynamicAttributes: false,
+        },
+        files: {
+          'tmp/php_code_no_dynamic_attributes.php': ['test/fixtures/php_code.haml'],
+        },
+      },
       invalidWrite: {
         files: {
           'tmp/invalidWrite.html': ['test/fixtures/invalid.haml'],

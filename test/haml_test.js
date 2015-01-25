@@ -61,6 +61,15 @@ exports.haml = {
 
     test.done();
   },
+  php_code_no_dynamic_attributes: function(test) {
+    test.expect(1);
+
+    var actual = grunt.file.read('tmp/php_code_no_dynamic_attributes.php');
+    var expected = grunt.file.read('test/expected/php_code_no_dynamic_attributes.php');
+    test.equal(actual, expected, 'Should compile haml with embedded php without dynamic attributes');
+
+    test.done();
+  },
   unknown_filter: function(test) {
     test.expect(1);
 
