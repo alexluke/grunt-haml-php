@@ -39,7 +39,7 @@ grunt.initConfig({
 
 ### Options
 
-####options.target
+#### options.target
 Type: `String`
 Default value: `php`
 
@@ -50,6 +50,12 @@ Type: `Boolean`
 Default value: `true`
 
 If enabled, write any compile errors to the output file. Otherwise do nothing.
+
+#### options.enableDynamicAttributes
+Type: `Boolean`
+Default value: `true`
+
+Controls the `enable_dynamic_attrs` option of MtHaml. Disabling this removes the requirement for the MtHaml runtime.
 
 ### Usage Examples
 
