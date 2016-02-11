@@ -52,13 +52,16 @@ module.exports = function(grunt) {
   });
 
   var compileHaml = function(item, cb) {
-    var args = ['-t', hamlTarget || 'php', item ];
+
+    var isWin = /^win/.test(process.platform);
+
+    var args = isWin ? [path.join(__dirname, '../bin/haml'), '-t', hamlTarget || 'php', item ] : ['-t', hamlTarget || 'php', item ];
     if (!hamlEnableDynamicAttributes) {
       args.unshift('-d');
     }
 
     var child = grunt.util.spawn({
-      cmd: path.join(__dirname, '../bin/haml'),
+      cmd: isWin ? 'php' : path.join(__dirname, '../bin/haml'),
       args: args
     }, function(error, result, code) {
       cb(error, result.stdout);
