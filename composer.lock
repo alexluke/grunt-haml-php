@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c7ca4f0cc15485f870ff16666759ddbf",
+    "hash": "3053a140a3b7a9d560d0a3c61012c3e7",
+    "content-hash": "1687684b61323d6fe4a50c7bcb4e02e9",
     "packages": [
         {
             "name": "mthaml/mthaml",
