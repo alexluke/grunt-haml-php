@@ -56,10 +56,14 @@ module.exports = function(grunt) {
     var isWin = /^win/.test(process.platform);
 
     var args = isWin ? [path.join(__dirname, '../bin/haml'), '-t', hamlTarget || 'php', item ] : ['-t', hamlTarget || 'php', item ];
+    
     if (!hamlEnableDynamicAttributes) {
-      args.unshift('-d');
+      if (isWin){
+        args.splice(1, 0, '-d');
+      }else{
+        args.unshift('-d');
+      }
     }
-
     var child = grunt.util.spawn({
       cmd: isWin ? 'php' : path.join(__dirname, '../bin/haml'),
       args: args
